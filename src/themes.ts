@@ -1,0 +1,58 @@
+import type { CardTheme } from './types';
+
+export const themes: CardTheme[] = [
+  {
+    id: 'sultan-orange',
+    name: 'Amber Gold',
+    dark: '#15130f',
+    darkSoft: '#231d16',
+    accent: '#e8790f',
+    accentSoft: '#ff9d33',
+    gold: '#f0c869',
+  },
+  {
+    id: 'royal-blue',
+    name: 'Royal Blue',
+    dark: '#0c1220',
+    darkSoft: '#161f33',
+    accent: '#1d5fd6',
+    accentSoft: '#4c8cff',
+    gold: '#cfd9f0',
+  },
+  {
+    id: 'emerald',
+    name: 'Emerald',
+    dark: '#0b1712',
+    darkSoft: '#152621',
+    accent: '#12925a',
+    accentSoft: '#31c37f',
+    gold: '#e8d38a',
+  },
+  {
+    id: 'crimson',
+    name: 'Crimson',
+    dark: '#180b0c',
+    darkSoft: '#2a1315',
+    accent: '#c8202f',
+    accentSoft: '#ef4b4b',
+    gold: '#f0c869',
+  },
+  {
+    id: 'graphite',
+    name: 'Graphite Silver',
+    dark: '#121316',
+    darkSoft: '#1e2024',
+    accent: '#5b6572',
+    accentSoft: '#8b96a3',
+    gold: '#d8dce1',
+  },
+  {
+    id: 'violet',
+    name: 'Violet',
+    dark: '#140c1c',
+    darkSoft: '#221430',
+    accent: '#7a2fd1',
+    accentSoft: '#a565f0',
+    gold: '#e7cffa',
+  },
+];
