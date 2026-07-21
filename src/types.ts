@@ -32,4 +32,5 @@ export interface CardData {
   qrValue: string;
 
   theme: CardTheme;
+  backgroundPattern: string;
 }

@@ -25,4 +25,5 @@ export const defaultData: CardData = {
   qrValue: 'https://sultancoffee.example/verify/SC001-AR',
 
   theme: themes[0],
+  backgroundPattern: 'beans',
 };

@@ -3,7 +3,7 @@ import { User } from 'lucide-react';
 import type { CardData } from '../types';
 import CardFrame from './CardFrame';
 import CardLogo from './CardLogo';
-import BeanPattern from './BeanPattern';
+import BackgroundPattern from './BackgroundPattern';
 
 interface Props {
   data: CardData;
@@ -15,7 +15,12 @@ const IdCardFront = forwardRef<HTMLDivElement, Props>(function IdCardFront({ dat
   return (
     <CardFrame theme={theme} ref={ref}>
       <div className="relative flex h-full flex-col items-center pb-0 pt-6">
-        <BeanPattern id="front-pattern" color={theme.accent} opacity={0.14} />
+        <BackgroundPattern
+          id="front-pattern"
+          patternId={data.backgroundPattern}
+          color={theme.accent}
+          opacity={0.14}
+        />
 
         <div className="relative z-10">
           <CardLogo data={data} />

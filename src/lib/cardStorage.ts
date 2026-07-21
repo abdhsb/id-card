@@ -65,6 +65,7 @@ function cardDataToRow(data: CardData, photoUrl: string | null, logoUrl: string 
     emergency_phone: data.emergencyPhone,
     footer_note: data.footerNote,
     qr_value: data.qrValue,
+    background_pattern: data.backgroundPattern,
   };
 }
 
@@ -90,6 +91,7 @@ interface IdCardRow {
   footer_note: string;
   qr_value: string;
   theme_id: string;
+  background_pattern: string | null;
 }
 
 function rowToCardData(row: IdCardRow): CardData {
@@ -115,6 +117,7 @@ function rowToCardData(row: IdCardRow): CardData {
     footerNote: row.footer_note,
     qrValue: row.qr_value,
     theme: themes.find((t) => t.id === row.theme_id) ?? themes[0],
+    backgroundPattern: row.background_pattern ?? 'beans',
   };
 }
 

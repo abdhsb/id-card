@@ -4,7 +4,7 @@ import { Sparkles } from 'lucide-react';
 import type { CardData } from '../types';
 import CardFrame from './CardFrame';
 import CardLogo from './CardLogo';
-import BeanPattern from './BeanPattern';
+import BackgroundPattern from './BackgroundPattern';
 
 interface Props {
   data: CardData;
@@ -16,7 +16,12 @@ const IdCardBack = forwardRef<HTMLDivElement, Props>(function IdCardBack({ data 
   return (
     <CardFrame theme={theme} ref={ref}>
       <div className="relative flex h-full flex-col items-center px-5 pb-5 pt-6">
-        <BeanPattern id="back-pattern" color={theme.accent} opacity={0.1} />
+        <BackgroundPattern
+          id="back-pattern"
+          patternId={data.backgroundPattern}
+          color={theme.accent}
+          opacity={0.1}
+        />
 
         <div className="relative z-10">
           <CardLogo data={data} compact />

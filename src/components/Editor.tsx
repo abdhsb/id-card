@@ -3,6 +3,7 @@ import Section from './Section';
 import FormField from './FormField';
 import ImageUpload from './ImageUpload';
 import ThemePicker from './ThemePicker';
+import BackgroundPatternPicker from './BackgroundPatternPicker';
 
 interface Props {
   data: CardData;
@@ -17,6 +18,11 @@ export default function Editor({ data, onChange }: Props) {
     <div className="flex flex-col">
       <Section title="Tampilan">
         <ThemePicker value={data.theme} onChange={(theme) => set('theme', theme)} />
+        <BackgroundPatternPicker
+          value={data.backgroundPattern}
+          color={data.theme.accent}
+          onChange={(patternId) => set('backgroundPattern', patternId)}
+        />
         <ImageUpload label="Logo Perusahaan (opsional)" value={data.logoImage} onChange={(v) => set('logoImage', v)} />
       </Section>
 

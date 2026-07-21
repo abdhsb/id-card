@@ -7,6 +7,7 @@ create table if not exists public.id_cards (
   updated_at timestamptz not null default now(),
 
   theme_id text not null default 'sultan-orange',
+  background_pattern text not null default 'beans',
 
   logo_url text,
   company_name text not null default '',
@@ -30,6 +31,9 @@ create table if not exists public.id_cards (
   footer_note text not null default '',
   qr_value text not null default ''
 );
+
+-- in case the table already existed from an earlier version of this migration
+alter table public.id_cards add column if not exists background_pattern text not null default 'beans';
 
 -- keep updated_at fresh on every update
 create or replace function public.set_updated_at()
