@@ -3,6 +3,7 @@ import { Save, RefreshCw, Trash2, FolderOpen, CloudOff, AlertCircle } from 'luci
 import type { CardData } from '../types';
 import { isSupabaseConfigured } from '../lib/supabase';
 import { deleteCard, listCards, saveCard, type SavedCard } from '../lib/cardStorage';
+import { getErrorMessage } from '../lib/errorMessage';
 
 interface Props {
   data: CardData;
@@ -23,7 +24,7 @@ export default function SavedCardsPanel({ data, activeId, onLoad }: Props) {
     try {
       setCards(await listCards());
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Gagal memuat data');
+      setError(getErrorMessage(err, 'Gagal memuat data'));
     } finally {
       setLoading(false);
     }
@@ -41,7 +42,7 @@ export default function SavedCardsPanel({ data, activeId, onLoad }: Props) {
       onLoad(saved.id, saved.data);
       await refresh();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Gagal menyimpan kartu');
+      setError(getErrorMessage(err, 'Gagal menyimpan kartu'));
     } finally {
       setSaving(false);
     }
@@ -55,7 +56,7 @@ export default function SavedCardsPanel({ data, activeId, onLoad }: Props) {
       await deleteCard(id);
       await refresh();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Gagal menghapus kartu');
+      setError(getErrorMessage(err, 'Gagal menghapus kartu'));
     }
   };
 
