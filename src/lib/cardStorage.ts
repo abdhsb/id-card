@@ -45,6 +45,12 @@ async function uploadAsset(value: string | null, folder: string): Promise<string
 function cardDataToRow(data: CardData, photoUrl: string | null, logoUrl: string | null) {
   return {
     theme_id: data.theme.id,
+    theme_name: data.theme.name,
+    theme_dark: data.theme.dark,
+    theme_dark_soft: data.theme.darkSoft,
+    theme_accent: data.theme.accent,
+    theme_accent_soft: data.theme.accentSoft,
+    theme_gold: data.theme.gold,
     logo_url: logoUrl,
     company_name: data.companyName,
     company_subtitle: data.companySubtitle,
@@ -91,6 +97,12 @@ interface IdCardRow {
   footer_note: string;
   qr_value: string;
   theme_id: string;
+  theme_name: string | null;
+  theme_dark: string | null;
+  theme_dark_soft: string | null;
+  theme_accent: string | null;
+  theme_accent_soft: string | null;
+  theme_gold: string | null;
   background_pattern: string | null;
 }
 
@@ -116,7 +128,17 @@ function rowToCardData(row: IdCardRow): CardData {
     emergencyPhone: row.emergency_phone,
     footerNote: row.footer_note,
     qrValue: row.qr_value,
-    theme: themes.find((t) => t.id === row.theme_id) ?? themes[0],
+    theme: row.theme_dark
+      ? {
+          id: row.theme_id,
+          name: row.theme_name ?? 'Kustom',
+          dark: row.theme_dark,
+          darkSoft: row.theme_dark_soft ?? row.theme_dark,
+          accent: row.theme_accent ?? themes[0].accent,
+          accentSoft: row.theme_accent_soft ?? themes[0].accentSoft,
+          gold: row.theme_gold ?? themes[0].gold,
+        }
+      : (themes.find((t) => t.id === row.theme_id) ?? themes[0]),
     backgroundPattern: row.background_pattern ?? 'beans',
   };
 }

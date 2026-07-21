@@ -7,6 +7,12 @@ create table if not exists public.id_cards (
   updated_at timestamptz not null default now(),
 
   theme_id text not null default 'sultan-orange',
+  theme_name text not null default 'Amber Gold',
+  theme_dark text not null default '#15130f',
+  theme_dark_soft text not null default '#231d16',
+  theme_accent text not null default '#e8790f',
+  theme_accent_soft text not null default '#ff9d33',
+  theme_gold text not null default '#f0c869',
   background_pattern text not null default 'beans',
 
   logo_url text,
@@ -34,6 +40,12 @@ create table if not exists public.id_cards (
 
 -- in case the table already existed from an earlier version of this migration
 alter table public.id_cards add column if not exists background_pattern text not null default 'beans';
+alter table public.id_cards add column if not exists theme_name text not null default 'Amber Gold';
+alter table public.id_cards add column if not exists theme_dark text not null default '#15130f';
+alter table public.id_cards add column if not exists theme_dark_soft text not null default '#231d16';
+alter table public.id_cards add column if not exists theme_accent text not null default '#e8790f';
+alter table public.id_cards add column if not exists theme_accent_soft text not null default '#ff9d33';
+alter table public.id_cards add column if not exists theme_gold text not null default '#f0c869';
 
 -- keep updated_at fresh on every update
 create or replace function public.set_updated_at()

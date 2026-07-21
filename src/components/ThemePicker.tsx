@@ -1,6 +1,7 @@
-import { Check } from 'lucide-react';
+import { Check, Palette } from 'lucide-react';
 import { themes } from '../themes';
 import type { CardTheme } from '../types';
+import CustomThemeEditor from './CustomThemeEditor';
 
 interface Props {
   value: CardTheme;
@@ -8,6 +9,8 @@ interface Props {
 }
 
 export default function ThemePicker({ value, onChange }: Props) {
+  const isCustom = value.id === 'custom';
+
   return (
     <div>
       <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-neutral-500">
@@ -31,7 +34,22 @@ export default function ThemePicker({ value, onChange }: Props) {
             )}
           </button>
         ))}
+
+        <button
+          type="button"
+          title="Kustom"
+          onClick={() => onChange({ ...value, id: 'custom', name: 'Kustom' })}
+          className="relative flex h-9 w-9 items-center justify-center rounded-full border-2 border-dashed border-neutral-300 text-neutral-500 focus:outline-none"
+          style={{
+            boxShadow: isCustom ? `0 0 0 2px white, 0 0 0 4px ${value.accent}` : undefined,
+            borderColor: isCustom ? value.accent : undefined,
+          }}
+        >
+          <Palette size={16} />
+        </button>
       </div>
+
+      {isCustom && <CustomThemeEditor theme={value} onChange={onChange} />}
     </div>
   );
 }
