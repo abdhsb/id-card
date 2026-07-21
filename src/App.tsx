@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Download, Printer, RotateCcw, IdCard, FilePlus2 } from 'lucide-react';
+import { Download, Printer, RotateCcw, IdCard, FilePlus2, FileText } from 'lucide-react';
 import Editor from './components/Editor';
 import IdCardFront from './components/IdCardFront';
 import IdCardBack from './components/IdCardBack';
@@ -7,7 +7,7 @@ import BadgeMockup from './components/BadgeMockup';
 import SavedCardsPanel from './components/SavedCardsPanel';
 import { defaultData } from './defaultData';
 import type { CardData } from './types';
-import { exportNodeAsPng } from './exportImage';
+import { exportCardsAsPdf, exportNodeAsPng } from './exportImage';
 
 function App() {
   const [data, setData] = useState<CardData>(defaultData);
@@ -58,6 +58,17 @@ function App() {
     }
   };
 
+  const downloadPdf = async () => {
+    const nodes = [frontRef.current, backRef.current].filter((n): n is HTMLDivElement => n !== null);
+    if (nodes.length === 0) return;
+    setBusy('pdf');
+    try {
+      await exportCardsAsPdf(nodes, `${fileBase}.pdf`);
+    } finally {
+      setBusy(null);
+    }
+  };
+
   return (
     <div className="flex h-screen w-screen flex-col bg-neutral-100">
       <header className="flex shrink-0 items-center justify-between border-b border-neutral-200 bg-white px-6 py-3">
@@ -83,6 +94,13 @@ function App() {
             className="flex items-center gap-1.5 rounded-md border border-neutral-300 px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-50"
           >
             <Printer size={15} /> Cetak
+          </button>
+          <button
+            onClick={downloadPdf}
+            disabled={busy !== null}
+            className="flex items-center gap-1.5 rounded-md border border-neutral-300 px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-50 disabled:opacity-60"
+          >
+            <FileText size={15} /> {busy === 'pdf' ? 'Membuat PDF...' : 'Unduh PDF'}
           </button>
           <button
             onClick={downloadBoth}
