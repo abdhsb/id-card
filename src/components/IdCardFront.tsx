@@ -27,7 +27,7 @@ const IdCardFront = forwardRef<HTMLDivElement, Props>(function IdCardFront({ dat
         </div>
 
         <div
-          className="relative z-10 mt-5 h-[168px] w-[168px] overflow-hidden rounded-2xl"
+          className="relative z-10 mt-4 h-[204px] w-[204px] overflow-hidden rounded-2xl"
           style={{
             border: `3px solid ${theme.accent}`,
             boxShadow: `0 0 0 1px rgba(0,0,0,0.4), inset 0 0 20px rgba(0,0,0,0.4)`,
@@ -38,28 +38,25 @@ const IdCardFront = forwardRef<HTMLDivElement, Props>(function IdCardFront({ dat
             <img src={data.photo} alt={data.employeeName} className="h-full w-full object-cover" />
           ) : (
             <div className="flex h-full w-full items-center justify-center">
-              <User size={64} style={{ color: theme.accent, opacity: 0.5 }} />
+              <User size={72} style={{ color: theme.accent, opacity: 0.5 }} />
             </div>
           )}
         </div>
 
-        <div className="relative z-10 mt-4 px-4 text-center">
+        <div className="relative z-10 flex w-full flex-1 flex-col items-center justify-center gap-2 px-4 py-2 text-center">
           <div
             className="text-[20px] font-extrabold uppercase italic leading-[1.05]"
             style={{ color: theme.accentSoft, letterSpacing: '0.5px', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
           >
             {data.roleTitle}
           </div>
-        </div>
-
-        <div className="relative z-10 mt-2 px-3 text-center">
           <div className="text-[19px] font-bold uppercase tracking-wide text-white">
             {data.employeeName}
           </div>
         </div>
 
         <div
-          className="relative z-10 mt-auto w-full px-4 py-3 text-center"
+          className="relative z-10 w-full px-4 py-3 text-center"
           style={{ background: `linear-gradient(90deg, ${theme.accent}, ${theme.accentSoft})` }}
         >
           <div className="text-[14px] font-extrabold uppercase leading-tight text-white" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.35)' }}>
