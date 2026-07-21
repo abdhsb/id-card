@@ -1,18 +1,30 @@
 import { useRef, useState } from 'react';
-import { Download, Printer, RotateCcw, IdCard } from 'lucide-react';
+import { Download, Printer, RotateCcw, IdCard, FilePlus2 } from 'lucide-react';
 import Editor from './components/Editor';
 import IdCardFront from './components/IdCardFront';
 import IdCardBack from './components/IdCardBack';
 import BadgeMockup from './components/BadgeMockup';
+import SavedCardsPanel from './components/SavedCardsPanel';
 import { defaultData } from './defaultData';
 import type { CardData } from './types';
 import { exportNodeAsPng } from './exportImage';
 
 function App() {
   const [data, setData] = useState<CardData>(defaultData);
+  const [activeId, setActiveId] = useState<string | null>(null);
   const frontRef = useRef<HTMLDivElement>(null);
   const backRef = useRef<HTMLDivElement>(null);
   const [busy, setBusy] = useState<string | null>(null);
+
+  const handleLoad = (id: string, loaded: CardData) => {
+    setActiveId(id);
+    setData(loaded);
+  };
+
+  const handleNewCard = () => {
+    setActiveId(null);
+    setData(defaultData);
+  };
 
   const fileBase = data.employeeName.trim().replace(/\s+/g, '-').toLowerCase() || 'id-card';
 
@@ -55,6 +67,12 @@ function App() {
         </div>
         <div className="flex items-center gap-2">
           <button
+            onClick={handleNewCard}
+            className="flex items-center gap-1.5 rounded-md border border-neutral-300 px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-50"
+          >
+            <FilePlus2 size={15} /> Kartu Baru
+          </button>
+          <button
             onClick={() => setData(defaultData)}
             className="flex items-center gap-1.5 rounded-md border border-neutral-300 px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-50"
           >
@@ -78,6 +96,7 @@ function App() {
 
       <div className="flex min-h-0 flex-1">
         <aside className="card-scrollbar w-[380px] shrink-0 overflow-y-auto border-r border-neutral-200 bg-white px-5 py-4">
+          <SavedCardsPanel data={data} activeId={activeId} onLoad={handleLoad} />
           <Editor data={data} onChange={setData} />
         </aside>
 
