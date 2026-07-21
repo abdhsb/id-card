@@ -19,7 +19,7 @@ const IdCardFront = forwardRef<HTMLDivElement, Props>(function IdCardFront({ dat
           id="front-pattern"
           patternId={data.backgroundPattern}
           color={theme.accent}
-          opacity={0.14}
+          opacity={0.22}
         />
 
         <div className="relative z-10">

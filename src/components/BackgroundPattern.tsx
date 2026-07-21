@@ -9,15 +9,15 @@ function patternTile(patternId: string, color: string) {
   switch (patternId) {
     case 'beans':
       return {
-        size: 72,
+        size: 56,
         transform: 'rotate(8)',
         content: (
           <g fill="none" stroke={color} strokeWidth={1.4}>
-            <ellipse cx={18} cy={18} rx={13} ry={9} />
-            <path d="M8 18c4-6 14-6 18 0" />
-            <circle cx={54} cy={50} r={8} />
-            <path d="M46 50h16" />
-            <path d="M54 42v16" />
+            <ellipse cx={14} cy={14} rx={10} ry={7} />
+            <path d="M6 14c3-5 11-5 14 0" />
+            <circle cx={42} cy={39} r={6.5} />
+            <path d="M35.5 39h13" />
+            <path d="M42 32.5v13" />
           </g>
         ),
       };
