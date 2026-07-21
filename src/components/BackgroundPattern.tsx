@@ -59,6 +59,19 @@ function patternTile(patternId: string, color: string) {
         size: 18,
         content: <path d="M0 0L18 18M18 0L0 18" stroke={color} strokeWidth={1} />,
       };
+    case 'batik':
+      return {
+        size: 32,
+        content: (
+          <g fill="none" stroke={color} strokeWidth={1.1}>
+            <ellipse cx={16} cy={7} rx={5} ry={7.5} />
+            <ellipse cx={16} cy={25} rx={5} ry={7.5} />
+            <ellipse cx={7} cy={16} rx={7.5} ry={5} />
+            <ellipse cx={25} cy={16} rx={7.5} ry={5} />
+            <circle cx={16} cy={16} r={2.2} />
+          </g>
+        ),
+      };
     case 'dots':
       return {
         size: 26,

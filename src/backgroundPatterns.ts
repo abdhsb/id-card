@@ -10,6 +10,7 @@ export const backgroundPatterns: BackgroundPatternDef[] = [
   { id: 'steam', name: 'Uap Kopi' },
   { id: 'leaves', name: 'Daun Kopi' },
   { id: 'sack', name: 'Karung Goni' },
+  { id: 'batik', name: 'Batik Kawung' },
   { id: 'dots', name: 'Polkadot' },
   { id: 'diagonal', name: 'Garis Diagonal' },
   { id: 'grid', name: 'Kotak-kotak' },
