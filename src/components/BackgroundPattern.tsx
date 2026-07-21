@@ -21,6 +21,44 @@ function patternTile(patternId: string, color: string) {
           </g>
         ),
       };
+    case 'cup':
+      return {
+        size: 46,
+        transform: 'rotate(-6)',
+        content: (
+          <g fill="none" stroke={color} strokeWidth={1.3}>
+            <path d="M6 12h16v9a5 5 0 01-5 5h-6a5 5 0 01-5-5v-9z" />
+            <path d="M22 14h3.5a3.5 3.5 0 010 7H22" />
+            <path d="M10 4c0 1.6 2.2 1.6 2.2 3.2M15.5 4c0 1.6 2.2 1.6 2.2 3.2" />
+          </g>
+        ),
+      };
+    case 'steam':
+      return {
+        size: 30,
+        content: (
+          <g fill="none" stroke={color} strokeWidth={1.5}>
+            <path d="M8 1c-3 3 3 5.5 0 8.5S11 15 8 18" />
+            <path d="M21 1c-3 3 3 5.5 0 8.5S24 15 21 18" />
+          </g>
+        ),
+      };
+    case 'leaves':
+      return {
+        size: 42,
+        transform: 'rotate(12)',
+        content: (
+          <g fill="none" stroke={color} strokeWidth={1.3}>
+            <path d="M14 3c8 2.5 8 15.5 0 17.5-8-2-8-15 0-17.5z" />
+            <path d="M14 3.5v17" />
+          </g>
+        ),
+      };
+    case 'sack':
+      return {
+        size: 18,
+        content: <path d="M0 0L18 18M18 0L0 18" stroke={color} strokeWidth={1} />,
+      };
     case 'dots':
       return {
         size: 26,

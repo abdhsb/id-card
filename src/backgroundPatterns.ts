@@ -6,6 +6,10 @@ export interface BackgroundPatternDef {
 export const backgroundPatterns: BackgroundPatternDef[] = [
   { id: 'none', name: 'Polos' },
   { id: 'beans', name: 'Biji Kopi' },
+  { id: 'cup', name: 'Cangkir Kopi' },
+  { id: 'steam', name: 'Uap Kopi' },
+  { id: 'leaves', name: 'Daun Kopi' },
+  { id: 'sack', name: 'Karung Goni' },
   { id: 'dots', name: 'Polkadot' },
   { id: 'diagonal', name: 'Garis Diagonal' },
   { id: 'grid', name: 'Kotak-kotak' },
