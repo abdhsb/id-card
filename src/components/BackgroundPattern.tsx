@@ -72,6 +72,32 @@ function patternTile(patternId: string, color: string) {
           </g>
         ),
       };
+    case 'parang':
+      return {
+        size: 36,
+        transform: 'rotate(45)',
+        content: (
+          <path
+            d="M-4 12L5 4L14 12L23 4L32 12L41 4"
+            stroke={color}
+            strokeWidth={1.3}
+            fill="none"
+            strokeLinejoin="round"
+          />
+        ),
+      };
+    case 'crest':
+      return {
+        size: 54,
+        content: (
+          <g fill="none" stroke={color} strokeWidth={1.1}>
+            <path d="M6 15V11l3.5 2.6L12 8l2.5 5.6L18 11v4z" strokeLinejoin="round" />
+            <path d="M6 15h12" />
+            <ellipse cx={38} cy={35} rx={6} ry={4} transform="rotate(20 38 35)" />
+            <path d="M32.5 35c1.8-2.4 8.3-2.4 11 0" />
+          </g>
+        ),
+      };
     case 'dots':
       return {
         size: 26,

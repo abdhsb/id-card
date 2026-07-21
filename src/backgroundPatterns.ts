@@ -11,6 +11,8 @@ export const backgroundPatterns: BackgroundPatternDef[] = [
   { id: 'leaves', name: 'Daun Kopi' },
   { id: 'sack', name: 'Karung Goni' },
   { id: 'batik', name: 'Batik Kawung' },
+  { id: 'parang', name: 'Batik Parang' },
+  { id: 'crest', name: 'Motif Logo' },
   { id: 'dots', name: 'Polkadot' },
   { id: 'diagonal', name: 'Garis Diagonal' },
   { id: 'grid', name: 'Kotak-kotak' },
