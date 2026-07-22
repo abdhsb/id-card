@@ -26,7 +26,7 @@ export default function CardLogo({ data, compact }: CardLogoProps) {
         strokeWidth={1}
       />
       <div
-        className={`${compact ? 'text-2xl' : 'text-[28px]'} leading-none`}
+        className={`${compact ? 'text-2xl' : 'text-[28px]'} max-w-full whitespace-nowrap leading-none`}
         style={{
           fontFamily: "'Great Vibes', cursive",
           color: theme.gold,
